@@ -25,7 +25,7 @@ bl_info = {
     "version": (0, 1, 3),
     "blender": (2, 80, 1),
     "location": "keyboard",
-    "warning": "Please add the 2D animation workspace manually",
+    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation workspace manually",
     "wiki_url": "",
     "category": "3d View"
     }
