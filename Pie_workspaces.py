@@ -22,10 +22,10 @@ bl_info = {
     "name": "Pie Workspaces",
     "description": "Pie Workspaces",
     "author": "Laurent Laget, Lapineige",
-    "version": (0, 1, 3),
+    "version": (0, 1, 4),
     "blender": (2, 80, 1),
     "location": "keyboard",
-    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation workspace manually",
+    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation and Masking workspaces manually.",
     "wiki_url": "",
     "category": "3d View"
     }
@@ -72,6 +72,7 @@ class VIEW3D_PIE_workspaces(Menu):
         
         col.operator("class.rendering", text ="Rendering", icon ='SCENE')
         col.operator("class.compositing", text ="Compositing", icon ='RENDER_RESULT')
+        col.operator("class.masking", text ="Masking", icon ='RESTRICT_VIEW_ON')
         col = pie.column(align=True)
         
 
@@ -187,6 +188,17 @@ class scripting(bpy.types.Operator):
         bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Scripting']
         return {'FINISHED'}
 
+class masking(bpy.types.Operator):
+    bl_idname = "class.masking"
+    bl_label = "masking"
+    
+    def execute(self, context):
+        
+        layout = self.layout
+        bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Masking']
+        return {'FINISHED'}
+
+
 classes = (
     VIEW3D_PIE_workspaces,
     modeling,
@@ -200,6 +212,7 @@ classes = (
     compositing,
     da,
     scripting,
+    masking,
     )
 
 addon_keymaps = []
