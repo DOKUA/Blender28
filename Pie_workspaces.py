@@ -22,10 +22,10 @@ bl_info = {
     "name": "Pie Workspaces",
     "description": "Pie Workspaces",
     "author": "Laurent Laget, Lapineige",
-    "version": (0, 1, 4),
+    "version": (0, 1, 5),
     "blender": (2, 80, 1),
     "location": "keyboard",
-    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation and Masking workspaces manually.",
+    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation,Masking and Motion Tracking workspaces manually.",
     "wiki_url": "",
     "category": "3d View"
     }
@@ -73,6 +73,8 @@ class VIEW3D_PIE_workspaces(Menu):
         col.operator("class.rendering", text ="Rendering", icon ='SCENE')
         col.operator("class.compositing", text ="Compositing", icon ='RENDER_RESULT')
         col.operator("class.masking", text ="Masking", icon ='RESTRICT_VIEW_ON')
+        col.operator("class.motion", text ="Motion Tracking", icon ='ANIM_DATA')
+        
         col = pie.column(align=True)
         
 
@@ -198,6 +200,16 @@ class masking(bpy.types.Operator):
         bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Masking']
         return {'FINISHED'}
 
+class motion(bpy.types.Operator):
+    bl_idname = "class.motion"
+    bl_label = "Motion Tracking"
+    
+    def execute(self, context):
+        
+        layout = self.layout
+        bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Motion Tracking']
+        return {'FINISHED'}
+
 
 classes = (
     VIEW3D_PIE_workspaces,
@@ -213,6 +225,7 @@ classes = (
     da,
     scripting,
     masking,
+    motion,
     )
 
 addon_keymaps = []
