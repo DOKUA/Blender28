@@ -25,7 +25,7 @@ bl_info = {
     "version": (0, 1, 6),
     "blender": (2, 80, 1),
     "location": "keyboard",
-    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation,Masking and Motion Tracking workspaces manually.",
+    "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation,Masking,Video Editing and Motion Tracking workspaces manually.",
     "wiki_url": "",
     "category": "3d View"
     }
