@@ -22,7 +22,7 @@ bl_info = {
     "name": "Pie Workspaces",
     "description": "Pie Workspaces",
     "author": "Laurent Laget, Lapineige",
-    "version": (0, 1, 5),
+    "version": (0, 1, 6),
     "blender": (2, 80, 1),
     "location": "keyboard",
     "warning": "Press Ctrl Alt W to use the pie.Please add the 2D animation,Masking and Motion Tracking workspaces manually.",
@@ -68,6 +68,8 @@ class VIEW3D_PIE_workspaces(Menu):
         col.operator("class.animation", text ="3D Animation", icon ='SEQUENCE')
         col.operator("class.da", text ="2D Animation", icon ='GREASEPENCIL')
         col.operator("class.scripting", text ="Scripting", icon ='SCRIPTPLUGINS')
+        col.operator("class.video", text ="Video Editing", icon ='RENDER_ANIMATION')
+        
         col = pie.column(align=True)
         
         col.operator("class.rendering", text ="Rendering", icon ='SCENE')
@@ -210,6 +212,15 @@ class motion(bpy.types.Operator):
         bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Motion Tracking']
         return {'FINISHED'}
 
+class video(bpy.types.Operator):
+    bl_idname = "class.video"
+    bl_label = "Video Editing"
+    
+    def execute(self, context):
+        
+        layout = self.layout
+        bpy.data.window_managers['WinMan'].windows[0].workspace = bpy.data.workspaces['Video Editing']
+        return {'FINISHED'}
 
 classes = (
     VIEW3D_PIE_workspaces,
@@ -226,6 +237,7 @@ classes = (
     scripting,
     masking,
     motion,
+    video,
     )
 
 addon_keymaps = []
